@@ -1,51 +1,60 @@
-import { useAtom } from 'jotai'
-import { expandedAtom } from '../atoms'
+import Image from 'next/image'
+import { type IconType } from 'react-icons'
 
-import { RiLayoutGridFill, RiMenuLine } from 'react-icons/ri'
+import {
+  MdOutlineSpaceDashboard,
+  MdOutlineInbox,
+  MdPeopleOutline,
+  MdRequestQuote,
+  MdOutlineReportGmailerrorred
+} from 'react-icons/md'
+import { LuMailQuestion, LuHardHat, LuFolderCheck, LuDatabase, LuFileSignature } from 'react-icons/lu'
+import { FaFileInvoiceDollar } from 'react-icons/fa'
+
+const SideBarButton: React.FC<{ Icon: IconType; label: string }> = ({ Icon, label }) => {
+  return (
+    <div className=' mt-1 flex rounded p-2 hover:bg-slate-200'>
+      <Icon className={`mr-2 inline h-5 w-5 shrink-0 cursor-pointer select-none`} />
+      <h1 className={`inline text-sm font-medium`}>{label}</h1>
+    </div>
+  )
+}
 
 export default function Sidebar() {
-  const [expanded, setExpanded] = useAtom(expandedAtom)
-
-  // const [expanded, setExpanded] = useState(true)
-
-  const handleToggle = () => {
-    if (expanded) {
-      setExpanded(false)
-      console.log(expanded)
-      return
-    }
-    setExpanded(true)
-  }
-
   return (
     <>
-      <div className={`fixed bottom-0 left-0 top-0 flex h-full w-52 flex-col bg-slate-500 ${expanded ? '' : '!w-14'}`}>
-        <div className='flex items-center p-4'>
-          <RiMenuLine className='mr-4 h-5 w-5 shrink-0 cursor-pointer select-none' onClick={() => handleToggle()} />
-          <h1 className={`text-sm ${expanded ? '' : 'hidden'}`}>Ultramarine</h1>
+      <div className={`fixed bottom-0 left-0 top-0 flex h-full w-48 flex-col bg-white drop-shadow-md`}>
+        <div className='ml-2 flex items-center p-4'>
+          <Image
+            src={'/UMLogo.svg'}
+            alt='Picture of the author'
+            width={'46'}
+            height={'26'}
+            className='mr-4 shrink-0 cursor-pointer select-none'
+          />
+          <h1 className={`font-poppins text-sm`}>Ultramarine</h1>
         </div>
 
-        <div className='flex flex-col pl-4'>
-          <div className='flex items-center pr-2 pt-4 hover:text-cyan-400'>
-            <RiLayoutGridFill
-              className={`mr-4 h-5 w-5 shrink-0 cursor-pointer select-none ${expanded ? '' : 'mr-0'}`}
-            />
-            <h2 className={`inline-flex text-sm ${expanded ? '' : 'hidden'}`}>Dashboard</h2>
+        <div className='mt-2 flex flex-col p-4'>
+          <SideBarButton Icon={MdOutlineSpaceDashboard} label='Dashboard' />
+          <SideBarButton Icon={MdOutlineInbox} label='Inbox' />
+
+          <div className='mt-6'>
+            <SideBarButton Icon={MdPeopleOutline} label='Clients' />
+            <SideBarButton Icon={LuMailQuestion} label='Enquiries' />
+            <SideBarButton Icon={MdRequestQuote} label='Quotations' />
+            <SideBarButton Icon={LuHardHat} label='Jobs' />
+            <SideBarButton Icon={FaFileInvoiceDollar} label='Invoicing' />
+            <SideBarButton Icon={LuFolderCheck} label='Certification' />
+            <SideBarButton Icon={LuDatabase} label='Inventory' />
+          </div>
+
+          <div className='mt-6'>
+            <SideBarButton Icon={MdOutlineReportGmailerrorred} label='Issues' />
+            <SideBarButton Icon={LuFileSignature} label='Applications' />
           </div>
         </div>
       </div>
     </>
   )
 }
-
-// Dashboard
-// My Inbox
-// Clients
-// Enquiries
-// Quotations
-// Jobs
-// Invoicing
-// Certification
-// Inventory
-// Issues
-// Applications

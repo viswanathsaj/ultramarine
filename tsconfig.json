@@ -21,6 +21,15 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": [".eslintrc.cjs", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", ".lintstagedrc.js"],
+  "include": [
+    ".eslintrc.cjs",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
+    ".lintstagedrc.js",
+    "custom.d.ts"
+  ],
   "exclude": ["node_modules"]
 }
