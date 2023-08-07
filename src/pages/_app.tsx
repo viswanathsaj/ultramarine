@@ -15,15 +15,22 @@ const poppins = Poppins({
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <RootLayout>
-      <ClerkProvider {...pageProps}>
+    <ClerkProvider
+      {...pageProps}
+      appearance={{
+        elements: {
+          footer: 'hidden'
+        }
+      }}
+    >
+      <RootLayout>
         <Provider>
           <main className={poppins.variable}>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
           </main>
         </Provider>
-      </ClerkProvider>
-    </RootLayout>
+      </RootLayout>
+    </ClerkProvider>
   )
 }
 
