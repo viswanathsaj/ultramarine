@@ -38,7 +38,6 @@ const Download = () => {
       <div>
         <PDFDownloadLink document={<MyDocument />} fileName='somename.pdf'>
           {({ blob, url, loading, error }) => {
-            console.log(blob)
             return loading ? 'Loading document...' : 'Download now!'
           }}
         </PDFDownloadLink>

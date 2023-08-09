@@ -95,5 +95,18 @@ export const columns: ColumnDef<Payment>[] = [
         </DropdownMenu>
       )
     }
+  },
+  {
+    id: 'delete',
+    cell: ({ row }) => {
+      const payment = row.original
+
+      return (
+        <Button variant='destructive' onClick={() => console.log('delete')}>
+          Email
+          <ArrowUpDown className='ml-2 h-4 w-4' />
+        </Button>
+      )
+    }
   }
 ]
